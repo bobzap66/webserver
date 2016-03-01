@@ -23,9 +23,11 @@ COPY common* /etc/pam.d/
 RUN chmod 0600 /etc/sssd/sssd.conf /etc/pam.d/common* 
 RUN mkdir -p /var/run/sshd 
 RUN chmod 0755 /var/run/sshd
+RUN mkdir -p /var/run/sshd
+RUN chmod 0755 /var/run/sshd
 
 
 
 RUN curl https://sdk.cloud.google.com | bash
 RUN curl -L https://github.com/docker/machine/releases/download/v0.6.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && \
-chmod +x /usr/local/bin/docker-machine
+    chmod +x /usr/local/bin/docker-machine
