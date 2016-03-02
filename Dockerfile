@@ -29,5 +29,8 @@ RUN chmod 0755 /var/run/sshd
 
 
 RUN curl https://sdk.cloud.google.com | bash
+RUN mv /root/google-cloud-sdk
 RUN curl -L https://github.com/docker/machine/releases/download/v0.6.0/docker-machine-`uname -s`-`uname -m` > /usr/local/bin/docker-machine && \
     chmod +x /usr/local/bin/docker-machine
+
+RUN sed -i '/^ENV_PATH/s"PATH="PATH=/google-cloud-sdk/bin:"' /etc/login.defs
